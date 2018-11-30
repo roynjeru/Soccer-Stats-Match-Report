@@ -3,3 +3,5 @@ https://hackage.haskell.org/package/Spock
 https://www.spock.li/
 https://spockdocs.s3.eu-central-1.amazonaws.com/Spock-0.12.0.1/Web-Spock.html
 https://docs.haskellstack.org/en/stable/README/
+https://github.com/agrafix/funblog
+https://docs.haskellstack.org/en/stable/GUIDE/#stack-build

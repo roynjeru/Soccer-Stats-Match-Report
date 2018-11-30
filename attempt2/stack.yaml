@@ -62,9 +62,9 @@ packages:
 #
 # Allow a newer minor version of GHC than the snapshot specifies
 # compiler-check: newer-minor
-
 extra-deps:
   - Spock-0.13.0.0
   - Spock-core-0.13.0.0
   - reroute-0.5.0.0
- # - Spock-lucid-0.4.0.1@sha256:fa2c6ae737bad26767820af29c913140a657acbf745e90c9f9d4a184953855dc
+  - Spock-lucid-0.4.0.1@sha256:fa2c6ae737bad26767820af29c913140a657acbf745e90c9f9d4a184953855dc
+  
