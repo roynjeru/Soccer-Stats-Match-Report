@@ -126,3 +126,6 @@ app =
                 a_ [ id_ "otherLink", class_ "btn btn-primary", href_ "ExamplePage" ] $ "Other Link"
                 input_ [id_ "inputValue"] 
             ""
+            -- Solve script issue by having entire script in a string and do a 
+            -- script_ myString 
+            -- Where mystring is the string containing entire javascript
