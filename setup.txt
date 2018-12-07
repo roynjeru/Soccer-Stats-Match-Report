@@ -5,5 +5,10 @@ https://spockdocs.s3.eu-central-1.amazonaws.com/Spock-0.12.0.1/Web-Spock.html
 https://docs.haskellstack.org/en/stable/README/
 https://github.com/agrafix/funblog
 https://docs.haskellstack.org/en/stable/GUIDE/#stack-build
+https://www.youtube.com/watch?v=Orm-jIIgVD0&t=287s
 -- Html to lucid
 https://github.com/alogic0/lucid-from-html/blob/master/README.md
+-- Routing
+https://spockdocs.s3.eu-central-1.amazonaws.com/Spock-0.12.0.1/Web-Spock.html#v:wildcard
+https://www.spock.li/2015/04/19/type-safe_routing.html
+https://www.spock.li/tutorials/getting-started
