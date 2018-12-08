@@ -81,12 +81,18 @@ app =
             div_ [id_ "mainDiv", class_ "container"] $ do
                 h1_ "Hello!"
                 p_  "Welcome to the Soccer Stats Match Report Application"
-            -- script_ [ src_ "https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" ] $ ""
-            -- (html "<h1>Hello!<h1>")
+
             ""
        get ("Hello" <//> var) $ \name ->
-           do html ("Hello " <> name <> ", you are visitor number ")
-       get ( "ViewReport" </> wildcard ) $ \myParam -> text ("Hello" <> myParam ) $ lucid $
+           do text ("<div id="<> name <> "><div>")
+               -- html ("reportTable.js")
+               -- do div_ ""
+              
+              -- html ("<div><div>")
+              
+              -- html ("<div>")
+       
+       get "ViewReport" $ lucid $  -- <//> wildcard ) $ \myParam -> text ("Hello" <> myParam ) $ lucid $
         do doctype_ 
            ""
            html_ [lang_ "en"] $ do
@@ -98,6 +104,7 @@ app =
                 link_ [ rel_ "stylesheet", href_ "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" ]
                 script_ [ src_ ("https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" :: T.Text) ] $ ( "" :: T.Text)
                 script_ [ src_ ("https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" :: T.Text )] $ ( "" :: T.Text)
+                script_ [ src_ ("https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js" :: T.Text) ] $ ( "" :: T.Text)
                 script_ [src_ ("reportTable.js" :: T.Text)] $ ("" :: T.Text)
              body_ $ do
                 nav_ [ class_ "navbar navbar-default" ] $ do
@@ -144,6 +151,7 @@ app =
                 link_ [ rel_ "stylesheet", href_ "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" ]
                 script_ [ type_ ("text/javascript" :: T.Text ), src_ ("https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" :: T.Text )] $ ("" :: T.Text) 
                 script_ [ src_ ("https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" :: T.Text) ] $ ( "" :: T.Text)
+                script_ [ src_ ("https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js" :: T.Text) ] $ ( "" :: T.Text)
                 script_ [ src_ ("reportGenerate.js" :: T.Text)] $ ("" :: T.Text)
             body_ $ do
                 nav_ [ class_ "navbar navbar-default" ] $ do
@@ -167,6 +175,6 @@ app =
                 div_ $ do
                     h1_ [id_ "errorMsg", style_ "color: red; display: none"] $ "Please check your input"   
                 div_ [class_ "form-group"] $ do
-                    a_ [ id_ "generateReport", class_ "btn btn-success" ] $ "Generate Match Report"
+                    a_ [ id_ "generateReport", class_ "btn btn-success", href_ "ViewReport" ] $ "Generate Match Report"
                 
             ""

@@ -1,4 +1,7 @@
+var myPath;
 $(document).ready(function(){
+
+    
     document.getElementById('errorMsg').style.display = 'none';
     
     var mIndex = 0;
@@ -36,11 +39,16 @@ $(document).ready(function(){
 
     $('#generateReport').on('click', function(event){
         document.getElementById('errorMsg').style.display = 'none';
-        event.preventDefault();
+        // event.preventDefault();
         var stats = $('#stats').val().split('\n');
+        var statSum = $('#stats').val();
         team0 = $('#team0Name').val();
         team1 = $('#team1Name').val();
         date  = $('#matchDay').val();
+        $.cookie( 'statSum', statSum, {expires : 1});
+        var cookieWors = $.cookie('statSum');
+        console.log(cookieWors);
+
 
         // Iterate over all input in textbox counting all stats
         for (var i = 0; i < stats.length; i++)
@@ -78,8 +86,8 @@ $(document).ready(function(){
                 break;
             }
         }
-        console.log("Team 0 SA: ", sa0);
-        console.log("Team 1 SA: ", sa1);
+        //console.log("Team 0 SA: ", sa0);
+        //console.log("Team 1 SA: ", sa1);
         
 
         // Send user to new page with url defined
