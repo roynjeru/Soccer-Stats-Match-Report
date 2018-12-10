@@ -73,7 +73,7 @@ app =
                 script_ [ src_ ("https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" :: T.Text) ] $ ( "" :: T.Text)
                 script_ [ src_ ("https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" :: T.Text )] $ ( "" :: T.Text)
             body_ $ do
-                nav_ [ class_ "navbar navbar-default" ] $ do
+                nav_ [ class_ "navbar navbar-inverse" ] $ do
                     ul_ [ class_ "nav navbar-nav" ] $ do
                         li_ [ class_ "active" ] $ a_ [ href_ "/" ] $ "Home"
                         li_ $ a_ [ href_ "/Tutorial" ] $ "Tutorial"
@@ -83,14 +83,14 @@ app =
                 p_  "Welcome to the Soccer Stats Match Report Application"
 
             ""
-       get ("Hello" <//> var) $ \name ->
-           do text ("<div id="<> name <> "><div>")
-               -- html ("reportTable.js")
-               -- do div_ ""
+    --    get ("Hello" <//> var) $ \name ->
+    --        do text ("<div id="<> name <> "><div>")
+    --            -- html ("reportTable.js")
+    --            -- do div_ ""
               
-              -- html ("<div><div>")
+    --           -- html ("<div><div>")
               
-              -- html ("<div>")
+    --           -- html ("<div>")
        
        get "ViewReport" $ lucid $  -- <//> wildcard ) $ \myParam -> text ("Hello" <> myParam ) $ lucid $
         do doctype_ 
@@ -107,13 +107,92 @@ app =
                 script_ [ src_ ("https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js" :: T.Text) ] $ ( "" :: T.Text)
                 script_ [src_ ("reportTable.js" :: T.Text)] $ ("" :: T.Text)
              body_ $ do
-                nav_ [ class_ "navbar navbar-default" ] $ do
+                nav_ [ class_ "navbar navbar-inverse" ] $ do
                     ul_ [ class_ "nav navbar-nav" ] $ do
                         li_ [ class_ "active" ] $ a_ [ href_ "/" ] $ "Home"
                         li_ $ a_ [ href_ "/Tutorial" ] $ "Tutorial"
                         li_ $ a_ [ href_ "/GenerateReport" ] $ "Generate Report"   
              div_ [id_ "mainDiv", class_ "container"] $ do
-                h4_ "Match Report Table Below"        
+                h4_ "Match Report Table"      
+                div_ [id_ "tableDiv", class_ "container"] $ do
+                    table_ [id_ "statsTable", class_ "table table-hover"] $ do
+                        tr_ [id_ "headerRow"] $ do
+                            td_ [id_ "SOCC_date"] $ ""
+                            td_ $ do
+                                b_ [id_ "SOCC_team0"] $ "Team 0"
+                            td_ $ do
+                                b_ [id_ "SOCC_team1"] $ "Team 1"
+                        tr_ [id_ "SOCC_sa"] $ do
+                            td_ $ do
+                                b_ "Shot Attempts"
+                            td_ [id_ "SOCC_sa0"] $ ""
+                            td_ [id_ "SOCC_sa1"] $ ""
+                        tr_ [id_ "SOCC_so"] $ do
+                            td_ $ do
+                                b_ "Shots on Target"
+                            td_ [id_ "SOCC_so0"] $ ""
+                            td_ [id_ "SOCC_so1"] $ ""
+                        tr_ [id_ "SOCC_p"] $ do
+                            td_ $ do
+                                b_ "Passes"
+                            td_ [id_ "SOCC_p0"] $ ""
+                            td_ [id_ "SOCC_p1"] $ ""
+                        tr_ [id_ "SOCC_t"] $ do
+                            td_ $ do
+                                b_ "Tackles"
+                            td_ [id_ "SOCC_t0"] $ ""
+                            td_ [id_ "SOCC_t1"] $ ""
+                        tr_ [id_ "SOCC_g"] $ do
+                            td_ $ do
+                                b_ "Goals"
+                            td_ [id_ "SOCC_g0"] $ ""
+                            td_ [id_ "SOCC_g1"] $ ""
+                        tr_ [id_ "SOCC_a"] $ do
+                            td_ $ do
+                                b_ "Assists"
+                            td_ [id_ "SOCC_a0"] $ ""
+                            td_ [id_ "SOCC_a1"] $ ""
+                        tr_ [id_ "SOCC_c"] $ do
+                            td_ $ do
+                                b_ "Corners"
+                            td_ [id_ "SOCC_c0"] $ ""
+                            td_ [id_ "SOCC_c1"] $ ""
+                        tr_ [id_ "SOCC_yc"] $ do
+                            td_ $ do
+                                b_ "Yellow Cards"
+                            td_ [id_ "SOCC_yc0"] $ ""
+                            td_ [id_ "SOCC_yc1"] $ ""
+                        tr_ [id_ "SOCC_rc"] $ do
+                            td_ $ do
+                                b_ "Red Cards"
+                            td_ [id_ "SOCC_rc0"] $ ""
+                            td_ [id_ "SOCC_rc1"] $ ""
+                        tr_ [id_ "SOCC_f"] $ do
+                            td_ $ do
+                                b_ "Fouls"
+                            td_ [id_ "SOCC_f0"] $ ""
+                            td_ [id_ "SOCC_f1"] $ ""
+                        tr_ [id_ "SOCC_of"] $ do
+                            td_ $ do
+                                b_ "Offsides"
+                            td_ [id_ "SOCC_of0"] $ ""
+                            td_ [id_ "SOCC_of1"] $ ""
+                        tr_ [id_ "SOCC_pn"] $ do
+                            td_ $ do
+                                b_ "Penalties"
+                            td_ [id_ "SOCC_pn0"] $ ""
+                            td_ [id_ "SOCC_pn1"] $ ""
+                        tr_ [id_ "SOCC_b"] $ do
+                            td_ $ do
+                                b_ "Blocks"
+                            td_ [id_ "SOCC_b0"] $ ""
+                            td_ [id_ "SOCC_b1"] $ ""
+                        tr_ [id_ "SOCC_og"] $ do
+                            td_ $ do
+                                b_ "Own Goals"
+                            td_ [id_ "SOCC_og0"] $ ""
+                            td_ [id_ "SOCC_og1"] $ ""                      
+                            
 
        get "Tutorial" $ lucid $ do
         doctype_
@@ -131,14 +210,37 @@ app =
                 --     , "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ]
                     
             body_ $ do
-                nav_ [ class_ "navbar navbar-default" ] $ do
+                nav_ [ class_ "navbar navbar-inverse" ] $ do
                     ul_ [ class_ "nav navbar-nav" ] $ do
                         li_ [ class_ "active" ] $ a_ [ href_ "/" ] $ "Home"
                         li_ $ a_ [ href_ "/Tutorial" ] $ "Tutorial"
                         li_ $ a_ [ href_ "/GenerateReport" ] $ "Generate Report"
             div_ [id_ "mainDiv", class_ "container"] $ do
-                h4_ "Enter Stats below"
-                textarea_ [ class_ "form-control", rows_ "5", cols_ "50", id_ "textArea" ] $ ""
+                h4_ "Below are the list of commands."
+                -- br_ ""
+                ul_ [class_ "list-group"] $ do
+                    li_ [class_ "list-group-item"] "sa: Shot attempt"
+                    li_ [class_ "list-group-item"] "so: Shot on target"
+                    li_ [class_ "list-group-item"] "p: Pass"
+                    li_ [class_ "list-group-item"] "t: Tackle"
+                    li_ [class_ "list-group-item"] "g: Goal"
+                    li_ [class_ "list-group-item"] "a: Assist"
+                    li_ [class_ "list-group-item"] "c: Corner"
+                    li_ [class_ "list-group-item"] "yc: Yellow Card"
+                    li_ [class_ "list-group-item"] "rc: Red Card"
+                    li_ [class_ "list-group-item"] "f: Foul"
+                    li_ [class_ "list-group-item"] "of: Offside"
+                    li_ [class_ "list-group-item"] "pn: Penalty"
+                    li_ [class_ "list-group-item"] "b: Block"
+                    li_ [class_ "list-group-item"] "og: Own Goal"
+                
+                div_ $ do
+                    p_ "The valid syntax for a statistic is a command (from the list above) followed by a space and either a '0' or a '1'. '0' identifies the Home Team and '1' identifies the Away Team."
+                    p_ "There should be no spaces before or after the command and team identifier. This is an example of valid input 'so 1'. Syntax not conforming with the previous format will be rejected."
+                
+                h4_ "The image below is an example of correct syntax and input."
+                div_ $ do
+                    img_ [src_ "exampleInput.png", class_ "img-thumbnail", alt_ "alt text"]
        get "GenerateReport" $ lucid $ do 
         doctype_
         ""
@@ -154,7 +256,7 @@ app =
                 script_ [ src_ ("https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js" :: T.Text) ] $ ( "" :: T.Text)
                 script_ [ src_ ("reportGenerate.js" :: T.Text)] $ ("" :: T.Text)
             body_ $ do
-                nav_ [ class_ "navbar navbar-default" ] $ do
+                nav_ [ class_ "navbar navbar-inverse" ] $ do
                     ul_ [ class_ "nav navbar-nav" ] $ do
                         li_ [ class_ "active" ] $ a_ [ href_ "/" ] $ "Home"
                         li_ $ a_ [ href_ "/Tutorial" ] $ "Tutorial"
