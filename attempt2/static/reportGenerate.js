@@ -3,7 +3,8 @@ $(document).ready(function(){
 
     
     document.getElementById('errorMsg').style.display = 'none';
-    
+
+    var isValid = "1";
     var mIndex = 0;
     var team0 = "";
     var team1 = "";
@@ -81,48 +82,54 @@ $(document).ready(function(){
             else if( stats[i] === 'og 1') {og1++; continue;}
             else{
                 document.getElementById('errorMsg').style.display = 'block';
+                event.preventDefault();
+                isValid = "1";
                 break;
             }
         }
 
         // Store stats 
-        var statUrl = team0 + "/" + team1 + "/" + date + "/sa0: " + sa0 + "/sa1: " + sa1 + "/so0: " + so0 + "/so1: " + so1 + "/p0: " + p0 + "/p1: " + p1 + "/t0: " +
-            t0 + "/t1: " + t1 + "/g0: " + g0 + "/g1: " + g1 + "/a0: " + a0 + "/a1: " + a1 + "/c0: " + c0 + "/c1: " + c1 + "/yc0: " + yc0 + "/yc1: " + yc1 + "/rc0: " + rc0 + "/rc1: " + 
-            rc1 + "/f0: " + f0 + "/f1: " + f1 + "/of0: " + of0 + "/of1: " + of1 + "/pn0: " + pn0 + "/pn1: " + pn1 + "/b0: " + b0 + "/b1: " + b1 + "/og0: " + og0 + "/og1: " + og1;
         
-        $.cookie( 'statUrl', statUrl, {expires : 1});
-        $.cookie( 'SOCC_date', date);
-        $.cookie( 'SOCC_team0', team0);
-        $.cookie( 'SOCC_team1', team1);
-        $.cookie( 'SOCC_sa0', sa0);
-        $.cookie( 'SOCC_sa1', sa1);
-        $.cookie( 'SOCC_so0', so0);
-        $.cookie( 'SOCC_so1', so1);
-        $.cookie( 'SOCC_p0', p0);
-        $.cookie( 'SOCC_p1', p1);
-        $.cookie( 'SOCC_t0', t0);
-        $.cookie( 'SOCC_t1', t1);
-        $.cookie( 'SOCC_g0', g0);
-        $.cookie( 'SOCC_g1', g1);
-        $.cookie( 'SOCC_a0', a0);
-        $.cookie( 'SOCC_a1', a1);
-        $.cookie( 'SOCC_c0', c0);
-        $.cookie( 'SOCC_c1', c1);
-        $.cookie( 'SOCC_yc0', yc0);
-        $.cookie( 'SOCC_yc1', yc1);
-        $.cookie( 'SOCC_rc0', rc0);
-        $.cookie( 'SOCC_rc1', rc1);
-        $.cookie( 'SOCC_f0', f0);
-        $.cookie( 'SOCC_f1', f1);
-        $.cookie( 'SOCC_of0', of0);
-        $.cookie( 'SOCC_of1', of1);
-        $.cookie( 'SOCC_pn0', pn0);
-        $.cookie( 'SOCC_pn1', pn1);
-        $.cookie( 'SOCC_b0', b0);
-        $.cookie( 'SOCC_b1', b1);
-        $.cookie( 'SOCC_og0', og0);
-        $.cookie( 'SOCC_og1', og1);
         
+        if(isValid === "1")
+        {
+            var statUrl = team0 + "/" + team1 + "/" + date + "/sa0: " + sa0 + "/sa1: " + sa1 + "/so0: " + so0 + "/so1: " + so1 + "/p0: " + p0 + "/p1: " + p1 + "/t0: " +
+                t0 + "/t1: " + t1 + "/g0: " + g0 + "/g1: " + g1 + "/a0: " + a0 + "/a1: " + a1 + "/c0: " + c0 + "/c1: " + c1 + "/yc0: " + yc0 + "/yc1: " + yc1 + "/rc0: " + rc0 + "/rc1: " + 
+                rc1 + "/f0: " + f0 + "/f1: " + f1 + "/of0: " + of0 + "/of1: " + of1 + "/pn0: " + pn0 + "/pn1: " + pn1 + "/b0: " + b0 + "/b1: " + b1 + "/og0: " + og0 + "/og1: " + og1;
+            $.cookie( 'statUrl', statUrl, {expires : 1});
+            $.cookie( 'SOCC_date', date);
+            $.cookie( 'SOCC_team0', team0);
+            $.cookie( 'SOCC_team1', team1);
+            $.cookie( 'SOCC_sa0', sa0);
+            $.cookie( 'SOCC_sa1', sa1);
+            $.cookie( 'SOCC_so0', so0);
+            $.cookie( 'SOCC_so1', so1);
+            $.cookie( 'SOCC_p0', p0);
+            $.cookie( 'SOCC_p1', p1);
+            $.cookie( 'SOCC_t0', t0);
+            $.cookie( 'SOCC_t1', t1);
+            $.cookie( 'SOCC_g0', g0);
+            $.cookie( 'SOCC_g1', g1);
+            $.cookie( 'SOCC_a0', a0);
+            $.cookie( 'SOCC_a1', a1);
+            $.cookie( 'SOCC_c0', c0);
+            $.cookie( 'SOCC_c1', c1);
+            $.cookie( 'SOCC_yc0', yc0);
+            $.cookie( 'SOCC_yc1', yc1);
+            $.cookie( 'SOCC_rc0', rc0);
+            $.cookie( 'SOCC_rc1', rc1);
+            $.cookie( 'SOCC_f0', f0);
+            $.cookie( 'SOCC_f1', f1);
+            $.cookie( 'SOCC_of0', of0);
+            $.cookie( 'SOCC_of1', of1);
+            $.cookie( 'SOCC_pn0', pn0);
+            $.cookie( 'SOCC_pn1', pn1);
+            $.cookie( 'SOCC_b0', b0);
+            $.cookie( 'SOCC_b1', b1);
+            $.cookie( 'SOCC_og0', og0);
+            $.cookie( 'SOCC_og1', og1);
+        }
+        isValid = "1";
     });
 
 });
